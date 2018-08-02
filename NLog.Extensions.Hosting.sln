@@ -5,6 +5,7 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "repoItems", "repoItems", "{20164531-29BE-4FE8-B271-56E78CF54D85}"
 	ProjectSection(SolutionItems) = preProject
+		.bettercodehub.yml = .bettercodehub.yml
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		LICENSE = LICENSE
@@ -23,6 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{C72FFE
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLog.Extensions.Hosting.Tests", "test\NLog.Extensions.Hosting.Tests\NLog.Extensions.Hosting.Tests.csproj", "{A47D764D-C167-4BF2-BC60-D0D01EBA9742}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{C5F8C943-13FE-4D14-957E-B56DDE7A70F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
