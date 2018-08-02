@@ -6,7 +6,7 @@
 [![Build status Windows](https://ci.appveyor.com/api/projects/status/TODO/branch/master?svg=true)](https://ci.appveyor.com/project/nlog/nlog-framework-hosting/branch/master)
 [![Build Status Linux](https://travis-ci.org/NLog/NLog.Extensions.Hosting.svg?branch=master)](https://travis-ci.org/NLog/NLog.Extensions.Hosting)
 
-[![BCH compliance](https://bettercodehub.com/edge/badge/bryan5989/NLog.Extensions.Hosting?branch=master)](https://bettercodehub.com/)
+[![BCH compliance](https://bettercodehub.com/edge/badge/NLog/NLog.Extensions.Hosting?branch=master)](https://bettercodehub.com/)
 [![](https://sonarcloud.io/api/project_badges/measure?project=nlog.extensions.hosting&metric=ncloc)](https://sonarcloud.io/dashboard/?id=nlog.extensions.hosting) 
 [![](https://sonarcloud.io/api/project_badges/measure?project=nlog.extensions.hosting&metric=bugs)](https://sonarcloud.io/dashboard/?id=nlog.extensions.hosting) 
 [![](https://sonarcloud.io/api/project_badges/measure?project=nlog.extensions.hosting&metric=vulnerabilities)](https://sonarcloud.io/dashboard/?id=nlog.extensions.hosting) 

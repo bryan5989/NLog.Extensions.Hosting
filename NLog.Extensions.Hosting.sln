@@ -8,8 +8,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "repoItems", "repoItems", "{
 		.bettercodehub.yml = .bettercodehub.yml
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
+		.travis.yml = .travis.yml
+		appveyor.yml = appveyor.yml
+		build.ps1 = build.ps1
 		LICENSE = LICENSE
+		patchFileVersion.ps1 = patchFileVersion.ps1
 		README.md = README.md
+		run-sonar.ps1 = run-sonar.ps1
+		run-tests.ps1 = run-tests.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{08B0E297-4560-4CFA-96D6-C2472AF77572}"
