@@ -50,7 +50,6 @@ namespace NLog.Extensions.Hosting
                     .Assembly);
 
                 services.AddSingleton(new LoggerFactory().AddNLog(options));
-
             });
 
             return builder;

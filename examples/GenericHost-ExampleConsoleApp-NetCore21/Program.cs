@@ -59,8 +59,7 @@ namespace GenericHostExample
                     // in the section above, these settings may not be honored.
                     logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
                     logging.AddConsole();
-                })
-                ;
+                });
 
             // Normally, you'd call .build() on the builder, but I'll use a helper that implies it
             // var host = builder.Build();

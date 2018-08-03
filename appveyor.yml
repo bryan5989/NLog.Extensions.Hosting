@@ -13,7 +13,7 @@ install:
 
 build_script:
   - ps: .\build.ps1
-  
+
 artifacts:
   - path: 'artifacts\*.nupkg'
 
