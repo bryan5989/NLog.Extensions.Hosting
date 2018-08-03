@@ -59,12 +59,13 @@ namespace GenericHostExample
                     // in the section above, these settings may not be honored.
                     logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
                     logging.AddConsole();
-                });
+                })
+                ;
 
             // Normally, you'd call .build() on the builder, but I'll use a helper that implies it
             // var host = builder.Build();
 
-            // Generically you'd call await host.RunAsync()
+            // Generically you'd call await host.RunAsync() at this point, essentially executing your actual main thread
             // But since we want a console, this helper enables the support, builds the host, and runs it.
             // Added bonus: Also supports Ctrl-C aka SIGTERM for the win.
             await builder.RunConsoleAsync();
