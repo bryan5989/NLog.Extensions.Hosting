@@ -32,7 +32,7 @@ namespace NLog.Extensions.Hosting
                 ParseMessageTemplates = false
             });
         }
-        
+
         /// <summary>
         /// Enable and configure NLog as a logging provider for buildable generic host (.NET Core 2.1+).
         /// Can be used in discrete containers as well. 
@@ -44,15 +44,13 @@ namespace NLog.Extensions.Hosting
         {
             if (builder == null) throw new ArgumentNullException(nameof(builder));
 
-            builder.ConfigureServices((hostContext, services) =>
+            builder.ConfigureServices(services =>
             {
                 ConfigurationItemFactory.Default.RegisterItemsFromAssembly(typeof(ConfigureExtensions).GetTypeInfo()
                     .Assembly);
 
-                using (var factory = new LoggerFactory())
-                {
-                    services.AddSingleton(factory.AddNLog(options));
-                }
+                services.AddSingleton(new LoggerFactory().AddNLog(options));
+
             });
 
             return builder;
