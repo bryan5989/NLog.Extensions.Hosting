@@ -1,4 +1,4 @@
-# Nlog.Extensions.Hosting
+# NLog.Extensions.Hosting
 
 
 
@@ -15,20 +15,15 @@
 [![](https://sonarcloud.io/api/project_badges/measure?project=nlog.extensions.hosting&metric=sqale_debt_ratio)](https://sonarcloud.io/dashboard/?id=nlog.extensions.hosting) 
 [![](https://sonarcloud.io/api/project_badges/measure?project=nlog.extensions.hosting&metric=coverage)](https://sonarcloud.io/component_measures?id=nlog.extensions.hosting&metric=coverage) 
 
-[NLog](https://github.com/NLog/NLog) provider for [Microsoft.Extensions.Logging](https://github.com/aspnet/Logging); .NET Core. 
 
-Routes .NET Core log messages to NLog.
-
-
-**Note**: Microsoft haven't ported all their classes to .NET standard, so not every target/layout renderer is available. 
-Please check [platform support](https://github.com/NLog/NLog/wiki/platform-support)
+Facilitates configuring a .NetCore 2.1 Generic Host Builder object with [NLog](https://github.com/NLog/NLog) as the ILogger provider for the container with as little as a single call to .UseNLog() before building.
 
 
 ## Getting started
-
+Pardon our dust: This section is being updated
 
 - [Getting started with ASP.NET Core 2](https://github.com/NLog/NLog.Web/wiki/Getting-started-with-ASP.NET-Core-2)
-- TODO: use .netcore 2.1 [Getting started with .NET Core 2 Console application](https://github.com/NLog/NLog.Extensions.Logging/wiki/Getting-started-with-.NET-Core-2---Console-application)
+- [Getting started with .NET Core 2 Console application](https://github.com/NLog/NLog.Extensions.Logging/wiki/Getting-started-with-.NET-Core-2---Console-application)
 - [Multiple blogs to get started with ASP.NET Core and NLog](https://github.com/damienbod/AspNetCoreNlog)
 
 
@@ -39,10 +34,9 @@ Known issues
 - none
 
 
-### How to run the example (aspnet-core-example)
-TODO: this
-How to run the [example](#):
+### How to run the example (GenericHost-ExampleConsoleApp-NetCore21)
+How to run the [GenericHost-ExampleConsoleApp-NetCore21](https://github.com/bryan5989/NLog.Extensions.Hosting/tree/master/examples/GenericHost-ExampleConsoleApp-NetCore21):
 
 1. Install dotnet: http://dot.net 
 2. From source: `dotnet run`
-3. or, after publish: `dotnet $assemblyname.dll`
+3. or, after publish: `dotnet NLog.Extensions.Hosting.Examples.GenericHostConsoleApp.NetCore21.dll`
