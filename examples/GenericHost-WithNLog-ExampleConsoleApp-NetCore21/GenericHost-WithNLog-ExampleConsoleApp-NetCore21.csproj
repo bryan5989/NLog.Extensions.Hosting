@@ -23,4 +23,8 @@
     <PackageReference Include="NLog.Extensions.Logging" Version="1.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\lib\NLog.Extensions.Hosting.Examples.Dummies\NLog.Extensions.Hosting.Examples.Dummies.csproj" />
+  </ItemGroup>
+
 </Project>

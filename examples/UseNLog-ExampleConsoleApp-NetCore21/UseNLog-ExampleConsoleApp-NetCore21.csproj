@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\NLog.Extensions.Hosting\NLog.Extensions.Hosting.csproj" />
+    <ProjectReference Include="..\lib\NLog.Extensions.Hosting.Examples.Dummies\NLog.Extensions.Hosting.Examples.Dummies.csproj" />
   </ItemGroup>
 
 </Project>

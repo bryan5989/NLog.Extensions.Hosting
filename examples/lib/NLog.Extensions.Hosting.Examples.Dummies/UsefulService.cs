@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace UseNLogExample
+namespace NLog.Extensions.Hosting.Examples
 {
-    class UsefulService : IHostedService, IDisposable
+    public class UsefulService : IHostedService, IDisposable
     {
         private ILogger _logger;
         private Timer _timer;
