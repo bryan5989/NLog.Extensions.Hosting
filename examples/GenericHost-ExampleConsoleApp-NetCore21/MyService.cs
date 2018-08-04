@@ -10,11 +10,13 @@ namespace GenericHostExample
     internal class MyService : IHostedService, IDisposable
     {
         private readonly ILogger _logger;
+        // ReSharper disable once NotAccessedField.Local
         private readonly IOptions<MyServiceConfigSection> _serviceOptions;
-        private Timer _timer;
+        // ReSharper disable once NotAccessedField.Local
         private readonly string _someSettingFromConfig;
+        private Timer _timer;
 
-        public MyService(ILogger<MyService> logger, IOptions<MyServiceConfigSection> serviceOptions)
+        public MyService(ILogger logger, IOptions<MyServiceConfigSection> serviceOptions)
         {
             // Set up service with non-throwing methods
             _logger = logger;
@@ -22,24 +24,23 @@ namespace GenericHostExample
             _someSettingFromConfig = serviceOptions.Value.SomeSetting;
         }
 
+        public void Dispose()
+        {
+            _timer?.Dispose();
+        }
+
         public Task StartAsync(CancellationToken cancellationToken)
         {
             // Finish setting up the service if not completed in the constructor
             // Also call throwable methods from here (try-catch)
             _logger.LogInformation($"{nameof(MyService)} is starting...");
-            
+
             // finally, call the main method asynchronously or use a timer or similar
             _timer = new Timer(AsyncProcess, null, TimeSpan.Zero, TimeSpan.FromSeconds(5));
 
             // return a "completed" Task
             // In this context, completed means that the process has completed startup...
             return Task.CompletedTask;
-        }
-
-        private void AsyncProcess(object state)
-        {
-            // Do some work here
-            _logger.LogInformation($"Doing some work asynchronously...");
         }
 
         public Task StopAsync(CancellationToken cancellationToken)
@@ -52,9 +53,11 @@ namespace GenericHostExample
             // Like StartAsync counterpart, return a completed task, indicating service has stopped
             return Task.CompletedTask;
         }
-        public void Dispose()
+
+        private void AsyncProcess(object state)
         {
-            _timer?.Dispose();
+            // Do some work here
+            _logger.LogInformation("Doing some work asynchronously...");
         }
     }
 }

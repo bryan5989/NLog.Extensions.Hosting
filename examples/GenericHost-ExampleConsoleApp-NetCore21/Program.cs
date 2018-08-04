@@ -25,13 +25,10 @@ namespace GenericHostExample
                 {
                     // Much like before, here you can configure app level settings
                     // Can also be called multiple times
-                    config.AddJsonFile("appsettings.json", optional: true);
+                    config.AddJsonFile("appsettings.json", true);
                     config.AddEnvironmentVariables();
 
-                    if (args != null)
-                    {
-                        config.AddCommandLine(args);
-                    }
+                    if (args != null) config.AddCommandLine(args);
                 })
                 // Now configure the services for this continer (via Dependency Injection)
                 .ConfigureServices((hostContext, services) =>
@@ -43,7 +40,8 @@ namespace GenericHostExample
 
                     // This performs a binding of a particular config file section to a Model class
                     // and adds it to the IOptions chain, so you can read it from within the service
-                    services.Configure<MyServiceConfigSection>(hostContext.Configuration.GetSection("MyServiceConfigSection"));
+                    services.Configure<MyServiceConfigSection>(
+                        hostContext.Configuration.GetSection("MyServiceConfigSection"));
 
                     // If service implements IHostedService use this:
                     services.AddHostedService<MyService>();

@@ -2,17 +2,18 @@
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using NLog;
 using NLog.Extensions.Logging;
 
 namespace NLogExample
 {
-    class Program
+    internal class Program
     {
-        static async Task Main(string[] args)
+        private static async Task Main()
         {
             // Star a new ServiceCollection
             var serviceCollection = new ServiceCollection();
-            
+
             // Enable logging services for the collection
             serviceCollection.AddLogging();
 
@@ -26,7 +27,7 @@ namespace NLogExample
             loggerFactory.AddNLog();
 
             // Access NLog's static configuration and configure it using the usual xml file
-            NLog.LogManager.LoadConfiguration("NLog.config");
+            LogManager.LoadConfiguration("NLog.config");
 
             // Now that Nlog is registered and configured, get the service provider's Logging Interface
             var logger = serviceProvider.GetService<ILogger<Program>>();
@@ -35,6 +36,7 @@ namespace NLogExample
             logger.LogInformation("Look! a log message");
 
             Console.ReadKey();
+            await Task.CompletedTask;
         }
     }
 }

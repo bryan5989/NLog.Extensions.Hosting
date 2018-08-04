@@ -8,12 +8,14 @@ using NLog.Extensions.Hosting.Examples;
 
 namespace UseNLogExample
 {
-    class Program
+    internal class Program
     {
-        static async Task Main(string[] args)
+        private static async Task Main()
         {
             // To log messages during host setup
             var setupLogger = LogManager.LoadConfiguration("NLog.config").GetCurrentClassLogger();
+
+            setupLogger.Trace("Loggining has Started...");
 
             var hostBuilder = new HostBuilder();
 

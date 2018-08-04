@@ -9,13 +9,13 @@ using NLog.Extensions.Logging;
 namespace NLog.Extensions.Hosting
 {
     /// <summary>
-    /// Helpers for IHostbuilder, netcore 2.1
+    ///     Helpers for IHostbuilder, netcore 2.1
     /// </summary>
     public static class ConfigureExtensions
     {
         /// <summary>
-        /// Enable and configure NLog as a logging provider for buildable generic host (.NET Core 2.1+).
-        /// Can be used in discrete containers as well.
+        ///     Enable and configure NLog as a logging provider for buildable generic host (.NET Core 2.1+).
+        ///     Can be used in discrete containers as well.
         /// </summary>
         /// <param name="builder"></param>
         /// <returns>IHostBuilder for chaining</returns>
@@ -34,8 +34,8 @@ namespace NLog.Extensions.Hosting
         }
 
         /// <summary>
-        /// Enable and configure NLog as a logging provider for buildable generic host (.NET Core 2.1+).
-        /// Can be used in discrete containers as well. 
+        ///     Enable and configure NLog as a logging provider for buildable generic host (.NET Core 2.1+).
+        ///     Can be used in discrete containers as well.
         /// </summary>
         /// <param name="builder"></param>
         /// <param name="options">NLogProviderOptions object to configure NLog behavior</param>

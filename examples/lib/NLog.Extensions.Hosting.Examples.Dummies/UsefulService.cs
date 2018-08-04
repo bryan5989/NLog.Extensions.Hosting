@@ -8,24 +8,25 @@ namespace NLog.Extensions.Hosting.Examples
 {
     public class UsefulService : IHostedService, IDisposable
     {
-        private ILogger _logger;
+        private readonly ILogger _logger;
         private Timer _timer;
 
-        public UsefulService(ILogger<UsefulService> logger)
+        public UsefulService(ILogger logger)
         {
             _logger = logger;
         }
+
+        public void Dispose()
+        {
+            _timer?.Dispose();
+        }
+
         public Task StartAsync(CancellationToken cancellationToken)
         {
             _logger.LogInformation("Here's me loggining in the init");
             _timer = new Timer(DoAThing, null, TimeSpan.Zero, TimeSpan.FromSeconds(5));
 
             return Task.CompletedTask;
-        }
-
-        private void DoAThing(object state)
-        {
-            _logger.LogInformation("Logging from the worker");
         }
 
         public Task StopAsync(CancellationToken cancellationToken)
@@ -36,9 +37,9 @@ namespace NLog.Extensions.Hosting.Examples
             return Task.CompletedTask;
         }
 
-        public void Dispose()
+        private void DoAThing(object state)
         {
-            _timer?.Dispose();
+            _logger.LogInformation("Logging from the worker");
         }
     }
 }
