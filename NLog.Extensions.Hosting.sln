@@ -33,15 +33,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLog.Extensions.Hosting.Tes
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{C5F8C943-13FE-4D14-957E-B56DDE7A70F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericHost-ExampleConsoleApp-NetCore21", "examples\GenericHost-ExampleConsoleApp-NetCore21\GenericHost-ExampleConsoleApp-NetCore21.csproj", "{6E8700A4-3CF8-4F73-A8F9-5DCEFD447739}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericHost-ExampleConsoleApp-NetCore21", "examples\GenericHost-ExampleConsoleApp-NetCore21\GenericHost-ExampleConsoleApp-NetCore21.csproj", "{6E8700A4-3CF8-4F73-A8F9-5DCEFD447739}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLog-ExampleConsoleApp-NetCore21", "examples\NLog-ExampleConsoleApp-NetCore21\NLog-ExampleConsoleApp-NetCore21.csproj", "{7B21E7A3-81A6-4BF2-9A74-E989EC4F686C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLog-ExampleConsoleApp-NetCore21", "examples\NLog-ExampleConsoleApp-NetCore21\NLog-ExampleConsoleApp-NetCore21.csproj", "{7B21E7A3-81A6-4BF2-9A74-E989EC4F686C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericHost-WithNLog-ExampleConsoleApp-NetCore21", "examples\GenericHost-WithNLog-ExampleConsoleApp-NetCore21\GenericHost-WithNLog-ExampleConsoleApp-NetCore21.csproj", "{DD068AE4-11E7-4FA2-A6E5-3B3C2F3F77D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericHost-WithNLog-ExampleConsoleApp-NetCore21", "examples\GenericHost-WithNLog-ExampleConsoleApp-NetCore21\GenericHost-WithNLog-ExampleConsoleApp-NetCore21.csproj", "{DD068AE4-11E7-4FA2-A6E5-3B3C2F3F77D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseNLog-ExampleConsoleApp-NetCore21", "examples\UseNLog-ExampleConsoleApp-NetCore21\UseNLog-ExampleConsoleApp-NetCore21.csproj", "{D25CCFAF-BADF-4087-89BA-FFD695BC4241}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UseNLog-ExampleConsoleApp-NetCore21", "examples\UseNLog-ExampleConsoleApp-NetCore21\UseNLog-ExampleConsoleApp-NetCore21.csproj", "{D25CCFAF-BADF-4087-89BA-FFD695BC4241}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLog.Extensions.Hosting.Examples.Dummies", "examples\lib\NLog.Extensions.Hosting.Examples.Dummies\NLog.Extensions.Hosting.Examples.Dummies.csproj", "{F2910FA8-5FFB-441A-9F95-F5725E519925}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLog.Extensions.Hosting.Examples.Dummies", "examples\lib\NLog.Extensions.Hosting.Examples.Dummies\NLog.Extensions.Hosting.Examples.Dummies.csproj", "{F2910FA8-5FFB-441A-9F95-F5725E519925}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{85A92614-8B11-4BC8-9904-0D1BE3D4E10C}"
 EndProject
@@ -92,6 +92,7 @@ Global
 		{DD068AE4-11E7-4FA2-A6E5-3B3C2F3F77D1} = {C5F8C943-13FE-4D14-957E-B56DDE7A70F0}
 		{D25CCFAF-BADF-4087-89BA-FFD695BC4241} = {C5F8C943-13FE-4D14-957E-B56DDE7A70F0}
 		{F2910FA8-5FFB-441A-9F95-F5725E519925} = {85A92614-8B11-4BC8-9904-0D1BE3D4E10C}
+		{85A92614-8B11-4BC8-9904-0D1BE3D4E10C} = {C5F8C943-13FE-4D14-957E-B56DDE7A70F0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {114BE416-1748-46FD-A1B0-CFE35BFE7DA3}
