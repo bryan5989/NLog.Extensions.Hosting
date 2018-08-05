@@ -9,14 +9,14 @@ namespace GenericHostExample
 {
     internal class MyService : IHostedService, IDisposable
     {
-        private readonly ILogger _logger;
+        private readonly ILogger<MyService> _logger;
         // ReSharper disable once NotAccessedField.Local
         private readonly IOptions<MyServiceConfigSection> _serviceOptions;
         // ReSharper disable once NotAccessedField.Local
         private readonly string _someSettingFromConfig;
         private Timer _timer;
 
-        public MyService(ILogger logger, IOptions<MyServiceConfigSection> serviceOptions)
+        public MyService(ILogger<MyService> logger, IOptions<MyServiceConfigSection> serviceOptions)
         {
             // Set up service with non-throwing methods
             _logger = logger;

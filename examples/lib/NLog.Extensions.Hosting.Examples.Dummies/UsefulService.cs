@@ -8,10 +8,10 @@ namespace NLog.Extensions.Hosting.Examples
 {
     public class UsefulService : IHostedService, IDisposable
     {
-        private readonly ILogger _logger;
+        private readonly ILogger<UsefulService> _logger;
         private Timer _timer;
 
-        public UsefulService(ILogger logger)
+        public UsefulService(ILogger<UsefulService> logger)
         {
             _logger = logger;
         }
