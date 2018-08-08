@@ -29,7 +29,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{C72FFE
 		src\NLog.Extensions.Hosting\NLog.snk = src\NLog.Extensions.Hosting\NLog.snk
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLog.Extensions.Hosting.Tests", "test\NLog.Extensions.Hosting.Tests\NLog.Extensions.Hosting.Tests.csproj", "{A47D764D-C167-4BF2-BC60-D0D01EBA9742}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLog.Extensions.Hosting.Tests", "test\NLog.Extensions.Hosting.Tests\NLog.Extensions.Hosting.Tests.csproj", "{A47D764D-C167-4BF2-BC60-D0D01EBA9742}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{C5F8C943-13FE-4D14-957E-B56DDE7A70F0}"
 EndProject
