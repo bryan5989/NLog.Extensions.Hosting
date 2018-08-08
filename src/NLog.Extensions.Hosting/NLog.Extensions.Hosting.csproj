@@ -15,11 +15,12 @@
     <PackageReleaseNotes>1.0: Initial release</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\common\NLog.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>NLog.snk</AssemblyOriginatorKeyFile>
+    <DocumentationFile>bin\$(Configuration)\netstandard2.0\NLog.Extensions.Hosting.xml</DocumentationFile>
   </PropertyGroup>
-
+ 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard2.0\NLog.Extensions.Hosting.xml</DocumentationFile>
+
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
