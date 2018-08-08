@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>NLog</RootNamespace>
-    <Company>Nlog</Company>
+    <Company>NLog</Company>
     <Authors>Julian Verdurmen;Bryan Gonzalez</Authors>
     <Description>NLog extension for Microsoft.Extensions.Hosting for usage in .NET Standard libraries and net core applications making use of the generic Host class introduced in netcore 2.1</Description>
     <PackageLicenseUrl>https://github.com/NLog/NLog.Extensions.Hosting/blob/master/LICENSE</PackageLicenseUrl>

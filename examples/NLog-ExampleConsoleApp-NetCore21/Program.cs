@@ -29,7 +29,7 @@ namespace NLogExample
             // Access NLog's static configuration and configure it using the usual xml file
             LogManager.LoadConfiguration("NLog.config");
 
-            // Now that Nlog is registered and configured, get the service provider's Logging Interface
+            // Now that NLog is registered and configured, get the service provider's Logging Interface
             var logger = serviceProvider.GetService<ILogger<Program>>();
 
             // Finally, log to your heart's content.
