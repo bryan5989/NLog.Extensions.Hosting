@@ -5,7 +5,7 @@ dotnet: 2.1.300
 
 install:
   - dotnet restore NLog.Extensions.Hosting.sln
-  - dotnet add package xunit.runner.console -version 2.4.0 -OutputDirectory testrunner
+  - dotnet add test/NLog.Extensions.Hosting.Tests/NLog.Extensions.Hosting.Tests.csproj package xunit.runner.console
   # Display dotnet version info
   - which dotnet;
     if [ $? -eq 0 ]; then
