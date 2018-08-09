@@ -1,10 +1,12 @@
 language: csharp
-
-dotnet: 2.0.0
+solution: NLog.Extensions.Hosting.sln
+dotnet: 2.1.0
+mono: none
 dist: trusty
 
 install:
-  - nuget install xunit.runner.console -version 2.2.0
+  - nuget restore NLog.Extensions.Hosting.sln
+  - nuget install xunit.runner.console -version 2.4.0 -OutputDirectory testrunner
   # Display dotnet version info
   - which dotnet;
     if [ $? -eq 0 ]; then
@@ -15,10 +17,6 @@ install:
       exit 1;
     fi
 
-  # Restore dependencies
-  - dotnet restore src/NLog.Extensions.Hosting
-  - dotnet restore test/NLog.Extensions.Hosting.Tests
-
 script:
  # Run tests
-  - dotnet test test/NLog.Extensions.Hosting.Tests --configuration Release --framework net461
+  - dotnet test test/NLog.Extensions.Hosting.Tests --configuration Release --framework netcoreapp2.1
