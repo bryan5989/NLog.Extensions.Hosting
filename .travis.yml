@@ -1,8 +1,6 @@
 language: csharp
 solution: NLog.Extensions.Hosting.sln
 dotnet: 2.1.3
-mono: none
-dist: trusty
 
 install:
   - nuget restore NLog.Extensions.Hosting.sln
