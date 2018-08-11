@@ -1,4 +1,4 @@
-version: 1.0.0.{build}
+version: 1.0.0
 image: Visual Studio 2017
 configuration: Release
 dotnet_csproj:
@@ -26,6 +26,7 @@ artifacts:
   - path: artifacts\*.nupkg
 
 test_script:
+  - dotnet tool install --global dotnet-sonarscanner
   - nuget.exe install OpenCover -ExcludeVersion -DependencyVersion Ignore
   - OpenCover\tools\OpenCover.Console.exe -register:user -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:"test -f netcoreapp2.1" -filter:"+[NLog.Extensions.Hosting]* -[NLog.Extensions.Hosting.Tests]*" -output:"coverage.xml" -oldstyle -targetdir:"test/NLog.Extensions.Hosting.Tests"
   - pip install codecov
