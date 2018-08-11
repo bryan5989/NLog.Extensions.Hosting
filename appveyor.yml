@@ -1,16 +1,20 @@
-version: 1.0.0
+version: '$(version_common)-CI:{build}'
 image: Visual Studio 2017
 configuration: Release
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
   version: '{version}'
-  package_version: '{version}'
-  assembly_version: '{version}'
-  file_version: '{version}.{build}'
-  informational_version: '{version}'
+  package_version: '$(version_common)'
+  assembly_version: '$(version_major).0'
+  file_version: '$(version_common).{build}'
+  informational_version: '$(version_common)'
 
 environment:
+  version_major: '1'
+  version_minor: '0'
+  version_patch: '0'
+  version_common: '$(version_major).$(version_minor).$(version_patch)'
   github_auth_token:
     secure: WYvd/k1xGCsDS+4iOhjzxA5/e36RjkxnuVOHpBR+eDtZNNjpYydCyNfd1COME9jI
   sonar_token:
