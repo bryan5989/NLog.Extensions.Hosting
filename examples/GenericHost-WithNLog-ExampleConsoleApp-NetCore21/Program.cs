@@ -9,7 +9,7 @@ using NLog.Extensions.Logging;
 
 namespace GenericHostExample
 {
-    internal class Program
+    internal static class Program
     {
         private static async Task Main()
         {
