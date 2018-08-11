@@ -1,4 +1,4 @@
-version: '{version_common}-ci{build}'
+version: '{version}-ci{build}'
 image: Visual Studio 2017
 configuration: Release
 dotnet_csproj:
