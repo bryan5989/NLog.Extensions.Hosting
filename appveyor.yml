@@ -1,14 +1,14 @@
-version: '$(version_common)-CI:{build}'
+version: '{version_common}-ci{build}'
 image: Visual Studio 2017
 configuration: Release
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
   version: '{version}'
-  package_version: '$(version_common)'
-  assembly_version: '$(version_major).0'
-  file_version: '$(version_common).{build}'
-  informational_version: '$(version_common)'
+  package_version: '{version_common}'
+  assembly_version: '{version_major}.0'
+  file_version: '{version_common).{build}'
+  informational_version: '{version_common}'
 
 environment:
   version_major: '1'
