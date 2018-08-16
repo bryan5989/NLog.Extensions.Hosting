@@ -9,6 +9,10 @@ namespace NLogExample
 {
     internal class Program
     {
+        protected Program ()
+        {
+        }
+
         private static async Task Main()
         {
             // Star a new ServiceCollection

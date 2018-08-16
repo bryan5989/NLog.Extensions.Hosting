@@ -38,21 +38,21 @@ if ($env:APPVEYOR_REPO_NAME -eq $github) {
     if ($prMode) {
         $pr = $env:APPVEYOR_PULL_REQUEST_NUMBER
         Write-Output "Sonar: Running Sonar for PR $pr"
-        SonarScanner.MSBuild.exe begin /o:"$sonarOrg" /k:"$sonarQubeId" /d:"sonar.host.url=$sonarUrl" /d:"sonar.login=$sonarToken" /v:"$buildVersion" /d:"sonar.cs.opencover.reportsPaths=coverage.xml" /d:"sonar.analysis.mode=preview" /d:"sonar.github.pullRequest=$pr" /d:"sonar.github.repository=$github" /d:"sonar.github.oauth=$env:github_auth_token"
+        dotnet sonarscanner begin /d:sonar.organization="$sonarOrg" /k:"$sonarQubeId" /d:"sonar.host.url=$sonarUrl" /d:"sonar.login=$sonarToken" /v:"$buildVersion" /d:"sonar.cs.opencover.reportsPaths=coverage.xml" /d:"sonar.analysis.mode=preview" /d:"sonar.github.pullRequest=$pr" /d:"sonar.github.repository=$github" /d:"sonar.github.oauth=$env:github_auth_token"
     }
     elseif ($branchMode) {
         $branch = $env:APPVEYOR_REPO_BRANCH;
         Write-Output "Sonar: Running Sonar in branch mode for branch $branch"
-        SonarScanner.MSBuild.exe begin /o:"$sonarOrg" /k:"$sonarQubeId" /d:"sonar.host.url=$sonarUrl" /d:"sonar.login=$sonarToken" /v:"$buildVersion" /d:"sonar.cs.opencover.reportsPaths=coverage.xml" /d:"sonar.branch.name=$branch"  
+        dotnet sonarscanner begin /d:sonar.organization="$sonarOrg" /k:"$sonarQubeId" /d:"sonar.host.url=$sonarUrl" /d:"sonar.login=$sonarToken" /v:"$buildVersion" /d:"sonar.cs.opencover.reportsPaths=coverage.xml" /d:"sonar.branch.name=$branch"  
     }
     else {
         Write-Output "Sonar: Running Sonar in non-preview mode, on branch $env:APPVEYOR_REPO_BRANCH"
-        SonarScanner.MSBuild.exe begin /o:"$sonarOrg" /k:"$sonarQubeId" /d:"sonar.host.url=$sonarUrl" /d:"sonar.login=$sonarToken" /v:"$buildVersion" /d:"sonar.cs.opencover.reportsPaths=coverage.xml"
+        dotnet sonarscanner begin /d:sonar.organization="$sonarOrg" /k:"$sonarQubeId" /d:"sonar.host.url=$sonarUrl" /d:"sonar.login=$sonarToken" /v:"$buildVersion" /d:"sonar.cs.opencover.reportsPaths=coverage.xml"
     }
 
-    msbuild /t:Rebuild $projectFile /p:targetFrameworks=$framework /verbosity:minimal
+    dotnet build /t:Rebuild $projectFile /p:targetFrameworks=$framework /verbosity:minimal
 
-    SonarScanner.MSBuild.exe end /d:"sonar.login=$env:sonar_token"
+    dotnet sonarscanner end /d:"sonar.login=$env:sonar_token"
 }
 else {
     Write-Output "Sonar: not running as we're on '$env:APPVEYOR_REPO_NAME'"
