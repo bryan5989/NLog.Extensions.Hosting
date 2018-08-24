@@ -2,18 +2,14 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NLog.Extensions.Logging;
 using Xunit;
-using Assert = Xunit.Assert;
 
 namespace NLog.Extensions.Hosting.Tests
 {
-    [TestClass]
     public class ExtensionMethodTests
     {
         [Fact]
-        [TestMethod]
         public void UseNLog_noParams_buildsAndExposesValidIServiceCollectiont()
         {
             var actual = new HostBuilder().UseNLog().Build();
@@ -24,7 +20,6 @@ namespace NLog.Extensions.Hosting.Tests
         }
 
         [Fact]
-        [TestMethod]
         public void UseNLog_withOptionsParam_buildsAndExposesValidIServiceCollection()
         {
             var someParam = new NLogProviderOptions {CaptureMessageProperties = false, CaptureMessageTemplates = false};

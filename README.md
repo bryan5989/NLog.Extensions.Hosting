@@ -3,7 +3,7 @@
 
 
 [![NuGet Pre Release](https://img.shields.io/nuget/vpre/NLog.Extensions.Hosting.svg)](https://www.nuget.org/packages/NLog.Extensions.Hosting)
-[![Build status Windows](https://ci.appveyor.com/api/projects/status/TODO/branch/master?svg=true)](https://ci.appveyor.com/project/nlog/nlog-framework-hosting/branch/master)
+[![Build status Windows](https://ci.appveyor.com/api/projects/status/nlog/nlog-extensions-hosting/branch/master?svg=true)](https://ci.appveyor.com/project/nlog/nlog-extensions-hosting/branch/master)
 [![Build Status Linux](https://travis-ci.org/NLog/NLog.Extensions.Hosting.svg?branch=master)](https://travis-ci.org/NLog/NLog.Extensions.Hosting)
 
 [![BCH compliance](https://bettercodehub.com/edge/badge/NLog/NLog.Extensions.Hosting?branch=master)](https://bettercodehub.com/)

@@ -8,7 +8,7 @@ using NLog.Extensions.Hosting.Examples;
 
 namespace UseNLogExample
 {
-    internal class Program
+    internal static class Program
     {
         private static async Task Main()
         {
