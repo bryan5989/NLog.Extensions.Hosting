@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace NLog.Extensions.Hosting.Examples
 {
-    public class UsefulService : IHostedService, IDisposable
+    public sealed class UsefulService : IHostedService, IDisposable
     {
         private readonly ILogger<UsefulService> _logger;
         private Timer _timer;

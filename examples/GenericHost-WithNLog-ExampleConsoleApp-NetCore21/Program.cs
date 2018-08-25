@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -9,7 +9,7 @@ using NLog.Extensions.Logging;
 
 namespace GenericHostExample
 {
-    internal class Program
+    internal static class Program
     {
         private static async Task Main()
         {

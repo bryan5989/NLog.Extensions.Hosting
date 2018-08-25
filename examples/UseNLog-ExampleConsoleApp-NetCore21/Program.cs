@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -8,7 +8,7 @@ using NLog.Extensions.Hosting.Examples;
 
 namespace UseNLogExample
 {
-    internal class Program
+    internal static class Program
     {
         private static async Task Main()
         {

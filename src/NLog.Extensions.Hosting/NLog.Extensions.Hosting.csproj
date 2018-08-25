@@ -1,10 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>NLog</RootNamespace>
-    <Company>Nlog</Company>
-    <Authors>Microsoft;Julian Verdurmen;Bryan Gonzalez</Authors>
+    <Company>NLog</Company>
+    <Authors>Julian Verdurmen;Bryan Gonzalez</Authors>
     <Description>NLog extension for Microsoft.Extensions.Hosting for usage in .NET Standard libraries and net core applications making use of the generic Host class introduced in netcore 2.1</Description>
     <PackageLicenseUrl>https://github.com/NLog/NLog.Extensions.Hosting/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/NLog/NLog.Extensions.Hosting</PackageProjectUrl>
@@ -15,11 +15,17 @@
     <PackageReleaseNotes>1.0: Initial release</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\common\NLog.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>NLog.snk</AssemblyOriginatorKeyFile>
+    <AssemblyTitle>$(Title)</AssemblyTitle>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DocumentationFile>bin\$(Configuration)\netstandard2.0\NLog.Extensions.Hosting.xml</DocumentationFile>
+    
+    <!-- SonarQube needs this -->
+    <ProjectGuid>{548E65CE-0378-4812-AE00-B173F1251D3C}</ProjectGuid>
   </PropertyGroup>
-
+ 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard2.0\NLog.Extensions.Hosting.xml</DocumentationFile>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>

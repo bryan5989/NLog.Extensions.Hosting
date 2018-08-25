@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace GenericHostExample
 {
-    public class Program
+    public static class Program
     {
         public static async Task Main(string[] args)
         {
@@ -60,7 +60,7 @@ namespace GenericHostExample
                 });
 
             // Normally, you'd call .build() on the builder, but I'll use a helper that implies it
-            // var host = builder.Build();
+            //var host = builder.Build();
 
             // Generically you'd call await host.RunAsync() at this point, essentially executing your actual main thread
             // But since we want a console, this helper enables the support, builds the host, and runs it.
