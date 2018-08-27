@@ -1,11 +1,10 @@
-version: '1.0.0-ci{build}'
+version: 1.0.0.{build}
 image: Visual Studio 2017
 configuration: Release
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
   version: '{version}'
-  package_version: '1.0.0'
   assembly_version: '1.0'
   file_version: '1.0.0.{build}'
   informational_version: '1.0.0'
@@ -16,19 +15,16 @@ environment:
   sonar_token:
     secure: OUI/jCbBF75TwKMPT+IfewdgwCgx9nQkRg3cYOEQNJeX5J2++oWS3dmpwO51XduP
 
-install:
-  - cmd: nuget restore
-
-build:
-  verbosity: minimal
+build_script:
+  - ps: .\build.ps1
 
 artifacts:
-  - path: artifacts\*.nupkg
+  - path: 'artifacts\*.nupkg'
 
 test_script:
   - dotnet tool install --global dotnet-sonarscanner
   - nuget.exe install OpenCover -ExcludeVersion -DependencyVersion Ignore
-  - OpenCover\tools\OpenCover.Console.exe -register:user -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:"test -f netcoreapp2.1" -filter:"+[NLog.Extensions.Hosting]* -[NLog.Extensions.Hosting.Tests]*" -output:"coverage.xml" -oldstyle -targetdir:"test/NLog.Extensions.Hosting.Tests"
+  - OpenCover\tools\OpenCover.Console.exe -register:user -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:"test -f netcoreapp2.0" -filter:"+[NLog.Extensions.Hosting]* -[NLog.Extensions.Hosting.Tests]*" -output:"coverage.xml" -oldstyle -targetdir:"test/NLog.Extensions.Hosting.Tests"
   - pip install codecov
   - codecov -f "coverage.xml"
   - ps: .\run-sonar.ps1
