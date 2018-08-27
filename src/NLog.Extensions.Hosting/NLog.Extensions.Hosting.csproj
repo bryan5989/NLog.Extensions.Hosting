@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+        <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+        
     <RootNamespace>NLog</RootNamespace>
     <Company>NLog</Company>
     <Authors>Julian Verdurmen;Bryan Gonzalez</Authors>
