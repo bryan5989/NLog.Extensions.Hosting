@@ -30,7 +30,7 @@ build:
   verbosity: minimal
 
 artifacts:
-- path: .\artifacts\**\*.nupkg
+- path: .\src\NLog.Extensions.Hosting\artifacts\*.nupkg
   name: NuGet
 
 test_script:
@@ -46,12 +46,14 @@ deploy:
   api_key:
     secure: CHaiyKKxNlq9ofjee3YItXa1AYdsj1caQHBI7kubVctln1I5n7odhxEQkRxvd6mz
   skip_symbols: true
+  artifact: /.*\.nupkg/
   on:
     branch: master
 - provider: NuGet
   name: production-NuGet
   api_key:
     secure: DtVDH1ZfIR8E2oDLeSPxfn0WFXw3MCv4WhLkkQQl9LfEHswb5sdxdCYodNKhrKik
+  artifact: /.*\.nupkg/
   on:
     branch: master
     appveyor_repo_tag: true
