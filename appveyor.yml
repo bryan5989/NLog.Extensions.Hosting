@@ -22,8 +22,12 @@ before_build:
 - choco install opencover.portable
 - choco install codecov
 
-build_script:
-  - ps: .\build.ps1
+build:
+  parallel: true
+  project: NLog.Extensions.Hosting.Sln
+  publish_nuget: true
+  publish_nuget_symbols: true
+  verbosity: normal
 
 artifacts:
 - path: .\artifacts\**\*.nupkg
@@ -51,7 +55,3 @@ deploy:
   on:
     branch: master
     appveyor_repo_tag: true
-
-cache:
-- tools -> build.cake
-- packages -> build.cake
