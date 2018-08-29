@@ -29,10 +29,6 @@ build:
   publish_nuget_symbols: true
   verbosity: minimal
 
-artifacts:
-- path: .\src\NLog.Extensions.Hosting\artifacts\*.nupkg
-  name: NuGet
-
 test_script:
   - dotnet tool install --global dotnet-sonarscanner
   - OpenCover.Console.exe -register:user -target:"dotnet.exe" -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full test/NLog.Extensions.Hosting.Tests/NLog.Extensions.Hosting.Tests.csproj" -filter:"+[NLog.Extensions.Hosting*]* -[NLog.Extensions.Hosting.Tests*]*" -output:".\coverage.xml" -oldstyle
@@ -53,7 +49,7 @@ deploy:
   name: production-NuGet
   api_key:
     secure: DtVDH1ZfIR8E2oDLeSPxfn0WFXw3MCv4WhLkkQQl9LfEHswb5sdxdCYodNKhrKik
-  artifact: /.*\.nupkg/
+  artifact: /.*NLog.Extensions.Hosting.\d+.*\.nupkg/
   on:
     branch: master
     appveyor_repo_tag: true
