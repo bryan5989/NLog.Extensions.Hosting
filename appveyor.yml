@@ -20,8 +20,8 @@ build_script:
   - ps: .\build.ps1
 
 artifacts:
-  - path: .\artifacts\**\*.nupkg
-  - name: NuGet
+- path: .\artifacts\**\*.nupkg
+  name: NuGet
 
 test_script:
   - dotnet tool install --global dotnet-sonarscanner
@@ -40,12 +40,11 @@ deploy:
     secure: CHaiyKKxNlq9ofjee3YItXa1AYdsj1caQHBI7kubVctln1I5n7odhxEQkRxvd6mz
   skip_symbols: true
   on:
-  branch: master
+    branch: master
 - provider: NuGet
   name: production-NuGet
   api_key:
     secure: DtVDH1ZfIR8E2oDLeSPxfn0WFXw3MCv4WhLkkQQl9LfEHswb5sdxdCYodNKhrKik
-  artifact: /.*\.nupkg/
   on:
     branch: master
     appveyor_repo_tag: true
