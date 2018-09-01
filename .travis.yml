@@ -18,4 +18,4 @@ install:
 
 script:
  # Run tests
-  - dotnet test test/NLog.Extensions.Hosting.Tests --configuration Debug --framework netcoreapp2.1
+  - dotnet test test/NLog.Extensions.Hosting.Tests --configuration Debug

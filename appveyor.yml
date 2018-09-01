@@ -1,6 +1,19 @@
-version: 1.0.0.{build}
+version: '{build}'
 image: Visual Studio 2017
-configuration: Release
+
+pull_requests:
+  do_not_increment_build_number: true
+
+branches:
+  only:
+  - master
+
+nuget:
+  disable_publish_on_pr: true
+
+artifacts:
+  - path: '**\*.nupkg'
+  - name: All generated NuGet packages
 
 environment:
   github_auth_token:
@@ -8,29 +21,40 @@ environment:
   sonar_token:
     secure: OUI/jCbBF75TwKMPT+IfewdgwCgx9nQkRg3cYOEQNJeX5J2++oWS3dmpwO51XduP
 
-
 install:
-  - '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools\VsDevCmd.bat"'
+  - ps: dotnet tool install --global dotnet-sonarscanner
+  - ps: cinst opencover.portable
+  - ps: cinst codecov
 
-build_script:
-  - ps: .\build.ps1
+before_build:
+  - nuget restore
 
-artifacts:
-  - path: 'artifacts\*.nupkg'
+build:
+  parallel: true
+  project: NLog.Extensions.Hosting.Sln
+  publish_nuget: true
+  publish_nuget_symbols: true
+  verbosity: minimal
+
+after_build:
+  -  ps: dotnet pack .\NLog.Extensions.Hosting.sln /p:Configuration=PreRelease
 
 test_script:
-  - dotnet tool install --global dotnet-sonarscanner
-  - nuget.exe install OpenCover -ExcludeVersion -DependencyVersion Ignore
-  - OpenCover\tools\OpenCover.Console.exe -register:user -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:"test -f netcoreapp2.0" -filter:"+[NLog.Extensions.Hosting]* -[NLog.Extensions.Hosting.Tests]*" -output:"coverage.xml" -oldstyle -targetdir:"test/NLog.Extensions.Hosting.Tests"
-  - pip install codecov
-  - codecov -f "coverage.xml"
+  - ps: OpenCover.Console.exe -register:user -target:"dotnet.exe" -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full test/NLog.Extensions.Hosting.Tests/NLog.Extensions.Hosting.Tests.csproj" -filter:"+[NLog.Extensions.Hosting*]* -[NLog.Extensions.Hosting.Tests*]*" -output:".\coverage.xml" -oldstyle
   - ps: .\run-sonar.ps1
-  - ps: .\run-tests.ps1
+  - ps: codecov -f .\coverage.xml
 
 deploy:
-- provider: NuGet
-  api_key:
-    secure: DtVDH1ZfIR8E2oDLeSPxfn0WFXw3MCv4WhLkkQQl9LfEHswb5sdxdCYodNKhrKik
-  artifact: /.*\.nupkg/
-  on:
-    branch: master
+  - provider: NuGet
+    name: preRelease
+    api_key:
+      secure: DtVDH1ZfIR8E2oDLeSPxfn0WFXw3MCv4WhLkkQQl9LfEHswb5sdxdCYodNKhrKik
+    artifact: /.*-rc.*\.nupkg/
+  - provider: NuGet
+    name: production
+    api_key:
+      secure: DtVDH1ZfIR8E2oDLeSPxfn0WFXw3MCv4WhLkkQQl9LfEHswb5sdxdCYodNKhrKik
+    artifact: /.*NLog\.Extensions\.Hosting\.\d+\.\d+\.\d+\.nupkg/
+    on:
+      branch: master
+      appveyor_repo_tag: true
