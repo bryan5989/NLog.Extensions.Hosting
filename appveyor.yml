@@ -1,14 +1,15 @@
-version: '1.0.0-ci{build}'
+version: '{build}'
 image: Visual Studio 2017
-configuration: Release
-dotnet_csproj:
-  patch: true
-  file: '**\*.csproj'
-  version: '{version}'
-  package_version: '1.0.0'
-  assembly_version: '1.0'
-  file_version: '1.0.0.{build}'
-  informational_version: '1.0.0'
+
+pull_requests:
+  do_not_increment_build_number: true
+
+branches:
+  only:
+  - master
+
+nuget:
+  disable_publish_on_pr: true
 
 environment:
   github_auth_token:
@@ -17,27 +18,41 @@ environment:
     secure: OUI/jCbBF75TwKMPT+IfewdgwCgx9nQkRg3cYOEQNJeX5J2++oWS3dmpwO51XduP
 
 install:
-  - cmd: nuget restore
+- ps: cinst opencover.portable
+- ps: cinst codecov
+
+
+before_build:
+- nuget restore
 
 build:
+  parallel: true
+  project: NLog.Extensions.Hosting.Sln
+  publish_nuget: true
+  publish_nuget_symbols: true
   verbosity: minimal
 
-artifacts:
-  - path: artifacts\*.nupkg
-
 test_script:
-  - dotnet tool install --global dotnet-sonarscanner
-  - nuget.exe install OpenCover -ExcludeVersion -DependencyVersion Ignore
-  - OpenCover\tools\OpenCover.Console.exe -register:user -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:"test -f netcoreapp2.1" -filter:"+[NLog.Extensions.Hosting]* -[NLog.Extensions.Hosting.Tests]*" -output:"coverage.xml" -oldstyle -targetdir:"test/NLog.Extensions.Hosting.Tests"
-  - pip install codecov
-  - codecov -f "coverage.xml"
+  - ps: dotnet tool install --global dotnet-sonarscanner
+  - ps: OpenCover.Console.exe -register:user -target:"dotnet.exe" -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full test/NLog.Extensions.Hosting.Tests/NLog.Extensions.Hosting.Tests.csproj" -filter:"+[NLog.Extensions.Hosting*]* -[NLog.Extensions.Hosting.Tests*]*" -output:".\coverage.xml" -oldstyle
+  - ps: codecov -f .\coverage.xml
   - ps: .\run-sonar.ps1
-  - ps: .\run-tests.ps1
 
 deploy:
 - provider: NuGet
+  name: ci-MyGet-feed
+  server: https://www.myget.org/F/sheepreaper-ci/api/v3/index.json
   api_key:
-    secure: DtVDH1ZfIR8E2oDLeSPxfn0WFXw3MCv4WhLkkQQl9LfEHswb5sdxdCYodNKhrKik
+    secure: CHaiyKKxNlq9ofjee3YItXa1AYdsj1caQHBI7kubVctln1I5n7odhxEQkRxvd6mz
+  skip_symbols: true
   artifact: /.*\.nupkg/
   on:
     branch: master
+- provider: NuGet
+  name: production-NuGet
+  api_key:
+    secure: DtVDH1ZfIR8E2oDLeSPxfn0WFXw3MCv4WhLkkQQl9LfEHswb5sdxdCYodNKhrKik
+  artifact: /.*NLog.Extensions.Hosting.\d+.*\.nupkg/
+  on:
+    branch: master
+    appveyor_repo_tag: true
