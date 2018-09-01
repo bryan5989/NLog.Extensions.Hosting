@@ -13,7 +13,7 @@ nuget:
 
 artifacts:
   - path: '**\*.nupkg'
-  - name: All generated NuGet packages
+    name: All generated NuGet packages
 
 environment:
   github_auth_token:
