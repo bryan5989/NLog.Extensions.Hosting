@@ -1,8 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>NLog.Extensions.Hosting.Examples</RootNamespace>
+    <Configurations>Debug;Release;PreRelease</Configurations>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>

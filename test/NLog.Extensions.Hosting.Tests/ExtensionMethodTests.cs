@@ -9,7 +9,7 @@ namespace NLog.Extensions.Hosting.Tests
 {
     public class ExtensionMethodTests
     {
-        [Fact]
+        [Fact, Trait("Category","Basic Functionality")]
         public void UseNLog_noParams_buildsAndExposesValidIServiceCollectiont()
         {
             var actual = new HostBuilder().UseNLog().Build();
@@ -19,7 +19,7 @@ namespace NLog.Extensions.Hosting.Tests
             Assert.Equal(2, serviceCount);
         }
 
-        [Fact]
+        [Fact, Trait("Category","Basic Functionality")]
         public void UseNLog_withOptionsParam_buildsAndExposesValidIServiceCollection()
         {
             var someParam = new NLogProviderOptions {CaptureMessageProperties = false, CaptureMessageTemplates = false};

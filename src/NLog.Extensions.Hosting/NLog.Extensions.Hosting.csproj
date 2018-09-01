@@ -20,6 +20,8 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <DocumentationFile>bin\$(Configuration)\netstandard2.0\NLog.Extensions.Hosting.xml</DocumentationFile>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <Configurations>Debug;Release;PreRelease</Configurations>
     
     <!-- SonarQube needs this -->
     <ProjectGuid>{548E65CE-0378-4812-AE00-B173F1251D3C}</ProjectGuid>
@@ -28,6 +30,10 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PreRelease|AnyCPU'">
+    <VersionSuffix>rc1</VersionSuffix>
   </PropertyGroup>
 
   <ItemGroup>
