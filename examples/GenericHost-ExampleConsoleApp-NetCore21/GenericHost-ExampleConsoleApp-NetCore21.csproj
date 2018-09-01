@@ -6,6 +6,7 @@
     <RootNamespace>GenericHostExample</RootNamespace>
     <LangVersion>latest</LangVersion>
     <AssemblyName>NLog.Extensions.Hosting.Examples.GenericHostConsoleApp.NetCore21</AssemblyName>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
