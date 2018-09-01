@@ -17,10 +17,13 @@ environment:
   sonar_token:
     secure: OUI/jCbBF75TwKMPT+IfewdgwCgx9nQkRg3cYOEQNJeX5J2++oWS3dmpwO51XduP
 
+install:
+- ps: cinst opencover.portable
+- ps: cinst codecov
+
+
 before_build:
 - nuget restore
-- choco install opencover.portable
-- choco install codecov
 
 build:
   parallel: true
@@ -30,9 +33,9 @@ build:
   verbosity: minimal
 
 test_script:
-  - dotnet tool install --global dotnet-sonarscanner
-  - OpenCover.Console.exe -register:user -target:"dotnet.exe" -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full test/NLog.Extensions.Hosting.Tests/NLog.Extensions.Hosting.Tests.csproj" -filter:"+[NLog.Extensions.Hosting*]* -[NLog.Extensions.Hosting.Tests*]*" -output:".\coverage.xml" -oldstyle
-  - codecov -f .\coverage.xml
+  - ps: dotnet tool install --global dotnet-sonarscanner
+  - ps: OpenCover.Console.exe -register:user -target:"dotnet.exe" -targetargs:"test --logger:trx;LogFileName=results.trx /p:DebugType=full test/NLog.Extensions.Hosting.Tests/NLog.Extensions.Hosting.Tests.csproj" -filter:"+[NLog.Extensions.Hosting*]* -[NLog.Extensions.Hosting.Tests*]*" -output:".\coverage.xml" -oldstyle
+  - ps: codecov -f .\coverage.xml
   - ps: .\run-sonar.ps1
 
 deploy:
