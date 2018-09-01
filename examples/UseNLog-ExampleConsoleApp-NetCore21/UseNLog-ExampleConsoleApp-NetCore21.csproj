@@ -6,6 +6,7 @@
     <RootNamespace>UseNLogExample</RootNamespace>
     <LangVersion>latest</LangVersion>
     <IsPackable>false</IsPackable>
+    <Configurations>Debug;Release;PreRelease</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
